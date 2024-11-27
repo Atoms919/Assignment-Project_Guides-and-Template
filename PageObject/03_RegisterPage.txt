@@ -30,64 +30,64 @@ Password = password
 # Positive Tests
 
 Login With Valid Credential
-    Navigate To Sign up Page RegisterUrl
+	Navigate To Sign up Page RegisterUrl
 	Input Firstname Firstname
 	Input Lastname Lastname
-    Input Username UserName
+	Input Username UserName
 	Input Email Email
-    Input Password Password
-    Submit Sign up Form
-    Verify Page Should Contain verify email page	  
+	Input Password Password
+	Submit Sign up Form
+	Verify Page Should Contain verify email page	  
     
 
 # Negative Tests
 
 Register with invalid firstname
-    Navigate To Sign up Page RegisterUrl
+	Navigate To Sign up Page RegisterUrl
 	Input Firstname ""
 	Input Lastname Lastname
-    Input Username UserName
+	Input Username UserName
 	Input Email Email
-    Input Password Password
-    Submit Sign up Form
-    Verify Page Should Contain error message "This field is required"
+	Input Password Password
+	Submit Sign up Form
+	Verify Page Should Contain error message "This field is required"
 
 Register with invalid lastname
-    Navigate To Sign up Page RegisterUrl
+	Navigate To Sign up Page RegisterUrl
 	Input Firstname Firstname
 	Input Lastname ""
-    Input Username UserName
+	Input Username UserName
 	Input Email Email
-    Input Password Password
-    Submit Sign up Form
-    Verify Page Should Contain error message "This field is required"
+	Input Password Password
+	Submit Sign up Form
+	Verify Page Should Contain error message "This field is required"
 
 Register with invalid username
-    Navigate To Sign up Page RegisterUrl
+	Navigate To Sign up Page RegisterUrl
 	Input Firstname Firstname
 	Input Lastname Lastname
-    Input Username Invalid_Username
+	Input Username Invalid_Username
 	Input Email Email
-    Input Password Password
-    Submit Sign up Form
-    Verify Page Should Contain error message "Username too short" or "Username already taken"
+	Input Password Password
+	Submit Sign up Form
+	Verify Page Should Contain error message "Username too short" or "Username already taken"
 
 Register with invalid email
-    Navigate To Sign up Page RegisterUrl
+	Navigate To Sign up Page RegisterUrl
 	Input Firstname Firstname
 	Input Lastname Lastname
-    Input Username UserName
+	Input Username UserName
 	Input Email Invalid_Email 
-    Input Password Password
-    Submit Sign up Form
-    Verify Page Should Contain error message "Invalid email" or "Email already taken"
+	Input Password Password
+	Submit Sign up Form
+	Verify Page Should Contain error message "Invalid email" or "Email already taken"
 
 Register with invalid password
-    Navigate To Sign up Page RegisterUrl
+	Navigate To Sign up Page RegisterUrl
 	Input Firstname Firstname
 	Input Lastname Lastname
-    Input Username UserName
+	Input Username UserName
 	Input Email Email
-    Input Password Invalid_Password
-    Submit Sign up Form
-    Verify Page Should Contain error message "Password too short" (min 8 char) or "Password too long" (max 128 char)
+	Input Password Invalid_Password
+	Submit Sign up Form
+	Verify Page Should Contain error message "Password too short" (min 8 char) or "Password too long" (max 128 char)

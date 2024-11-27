@@ -3,42 +3,81 @@
 
 *** Settings ***
 
-# TODO: Write Dcocumentation e.g. Project Test scenario. CRUD Operation: Create, Read, Update, Delete
+Documentation	Testing the create new project functionality. Create new project Test scenario with valid and invalid inputs.
 
-Documentation	
+Pre Condition Open Browser, register
+Post Condition Close All Browsers
+Tags ProjectPage, TS-3-ProjectPage
 
-# TODO: Write Precondition, Postcondition, Tags
-
-Pre Condition	 
-Post Condition	
-Tags
 
 #******************* Common Variables ********************
 
 *** Variables ***
 
-# NOTE: Please Remove your login credential before uploading Assignments
-
-# TODO: Write Project creation field variables
-
-
+NewProjectUrl = https://gitlab.com/projects/new
+ProjectName = projectName
+Invalid_ProjectName = "=*/\#&~,?;:!§
 
 #******************** Test Cases *************************
 
 *** Test Case ***
 
-# TODO: Write Positive and Negative Test Cases and Test Process steps
+# Positive Test 
 
-# Positive Test examples are below write test process steps for each below test case
+Create blank project
+	Navigate To NewProjectUrl
+	Click create a blank project
+	Input ProjectName ProjectName
+	Click create project
+	Verify Page Should Contain the new blank project
 
-	Create blank project
-	Create template project 
-	Update name of template project
-	Delete template project
-	Valide that message is showing Project 'First project ' was successfully created.
+Create template project 
+	Navigate To NewProjectUrl
+	Click create a template project
+	Choose a template
+	Input ProjectName ProjectName
+	Click create project
+	Verify Page Should Contain the new template project
+
+Change template
+	Navigate To NewProjectUrl
+	Click create a template project
+	Choose a template
+	Click change template 
+	Choose another template
+	Input ProjectName ProjectName
+	Click create project
+	Verify Page Should Contain the new template project
+
 
 # Negative Test examples are below write test process steps for each below test case
 
-	Create a blank project with the previous same name
+Create a project with the same name as another one
+	Navigate To NewProjectUrl
+	Click create a blank project (or template and choose a template)
+	Input ProjectName ProjectName
+	Click create project
+	Verify Page Should Contain the new blank project
+
+	Navigate To NewProjectUrl
+	Click create a blank project (or template and choose a template)
+	Input ProjectName ProjectName
+	Click create project
+	Verify Page Should Contain the error message "Project namespace name has already been taken"
+
+Create a project with invalid name
+	Navigate To NewProjectUrl
+	Click create a blank project (or template and choose a template)
+	Input ProjectName Invalid_ProjectName
+	Click create project
+	Verify Page Should Contain the error message "Name can contain only lowercase or uppercase letters, digits, emoji, spaces, dots, underscores, dashes, or pluses."
+
+Create a project with invalid path
+	Navigate To NewProjectUrl
+	Click create a blank project (or template and choose a template)
+	Input ProjectName ProjectName
+	Change Project slug to Invalid_ProjectName
+	Click create project
+	Verify Page Should Contain the error message "Path can only include non-accented letters, digits, '_', '-' and '.'. It must not start with '-', end in '.', '.git', or '.atom'."
 
 
