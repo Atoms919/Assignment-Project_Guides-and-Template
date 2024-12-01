@@ -4,22 +4,17 @@
 *** Settings ***
 Documentation	Issue Test scenario. CRUD Operation: Create, Read, Update, Delete
 
-# TODO: Write Precondition and Postcondition, Tags 
-
-Pre Condition	Tips: Project must be created by the user before 
-Post Condition	
-Tags
+Pre Condition Open Browser, register, create a project
+Post Condition Close All Browsers
+Tags ProjectPage, TS-4-IssuePage
 
 #******************* Common Variables ********************
 
-
 *** Variables ***
 
-# NOTE: Please Remove your login credential before uploading Assignments
-
-# TODO: Write Issue creation field variables, Updated name of the issue
-
-
+IssueUrl = https://gitlab.com/group-slug-here/project-slug-here /-/issues
+IssueTitle1 = IssueName1
+IssueTitle2 = IssueName1
 
 #******************** Test Cases *************************
 
@@ -27,9 +22,37 @@ Tags
 
 # TODO: Write Positive Test Cases and Test Process steps
 
-# Positive Test examples are below write test process steps for each below test case
+# Positive Test 
 
-	Create issue,
- 	Update name of issue, 
-	Create second issue with privious updated name
-    Delete first issue
+Create issue
+	Navigate to IssueUrl
+	Click "New issue" button
+	Input title IssueTitle1
+	Verify Page should contain the created issue
+
+Update name of issue
+	Navigate to IssueUrl
+	Click on the title of the previously created issue
+	Click on the edit button
+	Input title IssueTitle2
+	Verify Page should contain the updated issue
+
+Create second issue with previous updated name
+	Navigate to IssueUrl
+	Click "New issue" button
+	Input title IssueTitle2
+	Verify Page should contain the newly created issue
+
+Delete first issue
+	Navigate to IssueUrl
+	Click on the title of the first issue (the one on bottom)
+	Click on the option button
+	Click delete issue button
+	Verify Page should contain only the second issue
+
+# Negative Test 
+
+Empty IssueTitle
+	Navigate to IssueUrl
+	Click "New issue" button
+	Verify Page should contain the the error message "A title is required"

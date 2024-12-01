@@ -6,7 +6,7 @@
 Documentation	Testing the create new project functionality. Create new project Test scenario with valid and invalid inputs.
 
 Pre Condition Open Browser, register
-Post Condition Close All Browsers
+Post Condition Close All Browsers, delete the project 
 Tags ProjectPage, TS-3-ProjectPage
 
 

@@ -18,9 +18,14 @@ Tags Register, TS-2-Resister
 RegisterUrl = https://gitlab.com/users/sign_up
 Firstname = fname
 Lastname = lname
+Invalid_Firstname = ""
+Invalid_Lastname = ""
 Username = username
+Invalid_Username = ""
 Email = email@email.com
+Invalid_Email = ""
 Password = password
+Invalid_Password = ""
 
 
 #******************** Test Cases *************************
